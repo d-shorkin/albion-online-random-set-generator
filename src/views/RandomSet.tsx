@@ -65,6 +65,8 @@ export const RandomSet: React.FC<RandomSetProps> = () => {
       setBuilds(currentBuilds);
     }
 
+    console.log('changes');
+
     setBuilding(true);
     for (let i = 0; i < buildsCounts; i++) {
       const build = currentBuilds[i];
@@ -82,7 +84,6 @@ export const RandomSet: React.FC<RandomSetProps> = () => {
       } else if (!build.cloak) {
         return setItemGenerate({items: getRandomItems(3, 'cloak', Math.random() < 0.001), buildIndex: i, slot: 'cloak'});
       }
-
     }
 
     return setItemGenerate(null);
