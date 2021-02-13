@@ -44,7 +44,7 @@ function getRandomItems(count: number, type: keyof ItemsList, joke: boolean = fa
 export const RandomSet: React.FC<RandomSetProps> = () => {
   const [buildsCounts, setBuildsCount] = useState(1);
   const [building, setBuilding] = useState(false);
-  const [builds, setBuilds] = useState<Items[]>([]);
+  const [builds, setBuilds] = useState<Items[]>([{}]);
   const [itemGenerate, setItemGenerate] = useState<{ slot: string, buildIndex: number, items: IItem[] } | null>(null);
 
   const onChange = useCallback((e) => {
@@ -52,6 +52,7 @@ export const RandomSet: React.FC<RandomSetProps> = () => {
     setBuildsCount(count);
     setBuilds(new Array(count).fill(0).map(() => ({})));
   }, []);
+
   const nextItem = useCallback((item?: IItem) => {
     let currentBuilds = builds;
     if (item) {
@@ -95,7 +96,7 @@ export const RandomSet: React.FC<RandomSetProps> = () => {
                icon='users'
                iconPosition='left'/>
       </Form.Field>
-      <Button type='submit' onClick={() => nextItem()}>Поехали билить!</Button>
+      <Button type='submit' onClick={() => nextItem()} disabled={buildsCounts < 1}>Поехали билить!</Button>
     </Form>);
   };
 
