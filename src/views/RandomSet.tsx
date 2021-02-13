@@ -82,6 +82,7 @@ export const RandomSet: React.FC<RandomSetProps> = () => {
       } else if (!build.cloak) {
         return setItemGenerate({items: getRandomItems(3, 'cloak', Math.random() < 0.001), buildIndex: i, slot: 'cloak'});
       }
+
     }
 
     return setItemGenerate(null);
